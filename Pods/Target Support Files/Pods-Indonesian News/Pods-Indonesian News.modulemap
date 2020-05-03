@@ -1,0 +1,6 @@
+framework module Pods_Indonesian_News {
+  umbrella header "Pods-Indonesian News-umbrella.h"
+
+  export *
+  module * { export * }
+}

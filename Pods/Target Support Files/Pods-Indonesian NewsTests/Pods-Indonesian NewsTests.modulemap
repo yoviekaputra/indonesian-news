@@ -1,0 +1,6 @@
+framework module Pods_Indonesian_NewsTests {
+  umbrella header "Pods-Indonesian NewsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
