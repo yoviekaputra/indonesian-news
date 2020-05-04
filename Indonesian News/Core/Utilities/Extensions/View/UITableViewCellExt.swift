@@ -10,11 +10,11 @@ import UIKit
 
 extension UITableViewCell {
     class var identifier : String {
-        return String(describing: type(of: self))
+        return "\(self)"
     }
     
     class var nib : UINib {
-        return UINib(nibName: String(describing: type(of: self)), bundle: nil)
+        return UINib(nibName: identifier, bundle: nil)
     }
     
     static func registerTo(tableView: UITableView) {
@@ -22,6 +22,6 @@ extension UITableViewCell {
     }
     
     static func dequeue(tableView: UITableView, indexPath: IndexPath) -> Self {
-        return tableView.dequeueReusableCell(withIdentifier: self.identifier, for: indexPath) as! Self
+        return tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! Self
     }
 }

@@ -19,12 +19,12 @@ class LoaderVC {
 
     func show() {
         if loaderView == nil {
-            guard let topWindow = UIApplication.shared.windows.last else {return}
+            guard let topWindow = UIApplication.shared.windows.last else { return }
             /* Create Loader */
             let indicator = UIActivityIndicatorView()
-            indicator.transform = CGAffineTransform(scaleX: 1, y: 1)
-            indicator.tintColor = UIColor.white
-            //indicator.style =
+            //indicator.transform = CGAffineTransform(scaleX: 1, y: 1)
+            //indicator.tintColor = UIColor.white
+            indicator.style = .large
             
             /* create view */
             loaderView = UIView.init(frame: topWindow.bounds)

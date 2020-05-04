@@ -12,33 +12,30 @@ import Moya
 
 extension Reactive where Base : MoyaProviderType {
     func request<MODEL: Decodable>(_ token: Base.Target, _ model: MODEL.Type) -> Single<MODEL> {
+        self.printRequest(token)
         return self.request(token)
             .map { response in
-                self.printData(response)
+                self.printResponse(response)
                 return response
             }
             .map(model)
     }
     
-    func printData(_ response: Response) {
+    func printResponse(_ response: Response) {
         do {
             let json = try response.mapJSON()
+            print("\n--> [\(response.statusCode)] RESPONSE")
             print(json)
         } catch let error {
             print(error.localizedDescription)
         }
     }
     
-    /**
-     provider.rx.requestAne(.getPopularMovies(page), MoviesConfigModel.self)
-     .subscribe { [weak self] (event) in
-             self?.isLoading.value = false
-             switch event {
-             case .success(let _): break
-                 //self?.movies.value = response
-             case .error(let error):
-                 self?.handleError(error)
-             }
-     }.disposed(by: disposeBag)
-     */
+    func printRequest(_ token: Base.Target) {
+        print("\n--> [\(token.method.rawValue.uppercased())] \(token.baseURL.absoluteString)\(token.path)")
+        if let headers = token.headers {
+            print("--> HEADER \n \(headers)")
+        }
+        print("--> PARAM \\ BODY \n\(token.task)")
+    }
 }

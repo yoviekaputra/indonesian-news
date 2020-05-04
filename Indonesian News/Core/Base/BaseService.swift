@@ -6,8 +6,10 @@
 //  Copyright © 2020 multipolar. All rights reserved.
 //
 
-import Foundation
-
-class BaseService {
+protocol BaseServiceDelegate {
     
+}
+
+/* Router get data from resources (API or Local)*/
+class BaseService : BaseServiceDelegate {
 }

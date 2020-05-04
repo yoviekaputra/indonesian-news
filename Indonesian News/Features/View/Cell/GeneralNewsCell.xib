@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="GeneralNewsCell" customModule="Indonesian_News" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPQ-XF-HQD">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9g-se-jpO">
+                            <rect key="frame" x="16" y="8" width="109" height="109"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="109" id="fDK-an-Ohf"/>
+                                <constraint firstAttribute="width" constant="109" id="vpo-87-QhW"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abi-xN-O4D">
+                            <rect key="frame" x="133" y="8" width="265" height="20.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ql-7u-3xN">
+                            <rect key="frame" x="133" y="28.5" width="265" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yY-Aw-l7W">
+                            <rect key="frame" x="16" y="124" width="382" height="1"/>
+                            <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="wC1-cS-rLh"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/05/4 20:53" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwW-3m-RLH">
+                            <rect key="frame" x="315" y="104" width="83" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="abi-xN-O4D" firstAttribute="leading" secondItem="f9g-se-jpO" secondAttribute="trailing" constant="8" id="1Qw-5y-qph"/>
+                        <constraint firstItem="0yY-Aw-l7W" firstAttribute="top" secondItem="hwW-3m-RLH" secondAttribute="bottom" constant="8" id="76N-VL-ilJ"/>
+                        <constraint firstItem="0ql-7u-3xN" firstAttribute="leading" secondItem="abi-xN-O4D" secondAttribute="leading" id="CZM-Z0-0vf"/>
+                        <constraint firstItem="hwW-3m-RLH" firstAttribute="trailing" secondItem="0ql-7u-3xN" secondAttribute="trailing" id="CrH-f5-R3z"/>
+                        <constraint firstItem="abi-xN-O4D" firstAttribute="top" secondItem="QPQ-XF-HQD" secondAttribute="top" constant="8" id="LaC-Kl-kQP"/>
+                        <constraint firstItem="f9g-se-jpO" firstAttribute="top" secondItem="QPQ-XF-HQD" secondAttribute="top" constant="8" id="P2n-xL-KoO"/>
+                        <constraint firstItem="f9g-se-jpO" firstAttribute="leading" secondItem="QPQ-XF-HQD" secondAttribute="leading" constant="16" id="Py3-o7-RnG"/>
+                        <constraint firstAttribute="bottom" secondItem="0yY-Aw-l7W" secondAttribute="bottom" id="RWM-8Y-CmA"/>
+                        <constraint firstAttribute="bottom" secondItem="f9g-se-jpO" secondAttribute="bottom" constant="8" id="VvG-ze-yiR"/>
+                        <constraint firstItem="0yY-Aw-l7W" firstAttribute="leading" secondItem="f9g-se-jpO" secondAttribute="leading" id="hxJ-6I-gOf"/>
+                        <constraint firstItem="0ql-7u-3xN" firstAttribute="trailing" secondItem="abi-xN-O4D" secondAttribute="trailing" id="kEE-CT-Gia"/>
+                        <constraint firstItem="0yY-Aw-l7W" firstAttribute="trailing" secondItem="abi-xN-O4D" secondAttribute="trailing" id="pA1-Kg-jN5"/>
+                        <constraint firstItem="0ql-7u-3xN" firstAttribute="top" secondItem="abi-xN-O4D" secondAttribute="bottom" id="vH4-lf-bjr"/>
+                        <constraint firstAttribute="trailing" secondItem="abi-xN-O4D" secondAttribute="trailing" constant="16" id="zGP-jb-V6d"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="QPQ-XF-HQD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DFo-zZ-D7U"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QPQ-XF-HQD" secondAttribute="trailing" id="HUz-UO-bcR"/>
+                <constraint firstItem="QPQ-XF-HQD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ICd-qm-gU1"/>
+                <constraint firstAttribute="bottom" secondItem="QPQ-XF-HQD" secondAttribute="bottom" id="Jm2-lX-gOl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outlet property="imgNewsImage" destination="f9g-se-jpO" id="K5M-IX-Rid"/>
+                <outlet property="lblNewsDate" destination="hwW-3m-RLH" id="GVV-8m-VgI"/>
+                <outlet property="lblNewsDescription" destination="0ql-7u-3xN" id="xMb-sr-3oI"/>
+                <outlet property="lblNewsTitle" destination="abi-xN-O4D" id="IPl-Sx-S9A"/>
+            </connections>
+            <point key="canvasLocation" x="-227.536231884058" y="-547.43303571428567"/>
+        </view>
+    </objects>
+</document>

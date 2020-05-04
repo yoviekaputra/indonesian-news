@@ -1,5 +1,5 @@
 //
-//  ResultState.swift
+//  LoaderState.swift
 //  Indonesian News
 //
 //  Created by yoviekaputra on 03/05/20.
@@ -7,3 +7,7 @@
 //
 
 import Foundation
+enum LoaderState {
+    case show
+    case hide
+}

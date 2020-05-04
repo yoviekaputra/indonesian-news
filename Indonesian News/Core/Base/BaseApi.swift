@@ -40,6 +40,9 @@ extension BaseApi {
     }
     
     var baseHeaders: [String : String]? {
-        return nil
+        return [
+            "Accept": "*/*",
+            "Test": "A"
+        ]
     }
 }
