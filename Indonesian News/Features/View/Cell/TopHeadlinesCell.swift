@@ -15,6 +15,11 @@ class TopHeadlinesCell : UITableViewCell {
     private var topHeadlinesItem: [NewsModel] = []
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setupView()
+    }
+    
+    private func setupView() {
         collectionTopHeadlines.delegate = self
         collectionTopHeadlines.dataSource = self
         collectionTopHeadlines.register(
@@ -23,16 +28,10 @@ class TopHeadlinesCell : UITableViewCell {
         )
     }
     
-    func setViewModel(viewModel: NewsViewModel, disposable: DisposeBag) {
-        viewModel.getTopHeadlines()
-        viewModel.topHeadlinesObserver.observe(disposable) { response in
-            self.topHeadlinesItem.append(contentsOf: response?.articles ?? [])
-            self.collectionTopHeadlines.reloadData()
-        }
-    }
-    
-    func setItemSelectedObservable(itemSelected: ObservableData<NewsModel>) {
+    func binding(news: [NewsModel], itemSelected: ObservableData<NewsModel>?) {
+        self.topHeadlinesItem = news
         self.itemSelected = itemSelected
+        collectionTopHeadlines.reloadData()
     }
 }
 

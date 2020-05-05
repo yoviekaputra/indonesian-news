@@ -9,8 +9,8 @@
 import Foundation
 
 struct SectionData {
-    var cell: [NewsModel]
-    var header: NewsType
+    var header: NewsType?
+    var cell: [Any]?
 }
 
 enum NewsType: String {

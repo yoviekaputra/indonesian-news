@@ -17,10 +17,9 @@ class NewsTableView : BaseTableView {
     var loadMore = ObservableData<Int>()
     var currentPage = 1
     
-    private var newsSection: [SectionData] = [
-        SectionData(cell: [NewsModel](), header: NewsType.TopHeadlines),
-        SectionData(cell: [NewsModel](), header: NewsType.General)
-    ]
+    private var newsSection: [NewsType] = [ .TopHeadlines, .General]
+    private var topHeadlinesItem: [NewsModel] = []
+    private var generalItem: [NewsModel] = []
     
     override func setupView() {
         delegate = self
@@ -42,6 +41,12 @@ class NewsTableView : BaseTableView {
 }
 
 extension NewsTableView {
+    func addTopHeadlinesItem(news: [NewsModel]?) {
+        if let news = news {
+            addItem(type: .TopHeadlines, news: news)
+        }
+    }
+    
     func addNewsItem(news: [NewsModel]?) {
         if let news = news {
             addItem(type: .General, news: news)
@@ -50,10 +55,16 @@ extension NewsTableView {
     
     private func addItem(type: NewsType, news: [NewsModel]) {
         for (index, section) in newsSection.enumerated() {
-            if section.header.rawValue == type.rawValue {
-                newsSection[index].cell.append(contentsOf: news)
+            if type.rawValue == section.rawValue {
+                switch type {
+                case  .TopHeadlines:
+                    topHeadlinesItem = news
+                    break
+                case .General:
+                    generalItem.append(contentsOf: news)
+                    break
+                }
                 reloadSections(IndexSet(integer: index), with: .top)
-                return
             }
         }
     }
@@ -72,39 +83,43 @@ extension NewsTableView : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch newsSection[section].header {
+        switch newsSection[section] {
         case .TopHeadlines: return 1
-        default: return newsSection[section].cell.count
+        default: return generalItem.count
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = SectionHeaderView()
         let section = newsSection[section]
-        headerView.binding(header: section.header.rawValue)
+        headerView.binding(header: section.rawValue)
         return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = newsSection[indexPath.section]
-        let header = section.header
-        switch header {
+        switch section {
         case .TopHeadlines:
             let cell = TopHeadlinesCell.dequeue(tableView: tableView, indexPath: indexPath)
-            cell.setViewModel(viewModel: viewModel, disposable: disposable)
-            cell.setItemSelectedObservable(itemSelected: itemSelected)
+            cell.binding(news: topHeadlinesItem, itemSelected: itemSelected)
             return cell
         default:
-            let news = section.cell[indexPath.row]
+            let news = generalItem[indexPath.row]
             let cell = GeneralNewsCell.dequeue(tableView: tableView, indexPath: indexPath)
             cell.binding(news: news)
-            loadMoreChecking(cellEndIndex: section.cell.endIndex, row: indexPath.row)
+            loadMoreChecking(cellEndIndex: generalItem.endIndex, row: indexPath.row)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        itemSelected.value = newsSection[indexPath.section].cell[indexPath.row]
+        switch newsSection[indexPath.section] {
+        case .General:
+            itemSelected.value = generalItem[indexPath.row]
+            break
+        default:
+            print("")
+        }
     }
 }

@@ -15,4 +15,14 @@ extension UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as! UIView
     }
+    
+    func tap(_ tapGestureRecognizer: UITapGestureRecognizer) -> Void {
+        isUserInteractionEnabled = true
+        gestureRecognizers?.removeAll()
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func tap(target: Any?, action: Selector?) {
+        tap(UITapGestureRecognizer(target: target, action: action))
+    }
 }

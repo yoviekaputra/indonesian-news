@@ -27,8 +27,9 @@ class DashboardViewController : BaseViewController {
         service = NewsService(provider: MoyaProvider<NewsApi>())
         viewModel = NewsViewModel(disposable: disposable, service: service)
         tableView.setViewModel(viewModel: viewModel, disposable: disposable)
-        
         setupObserver()
+        
+        viewModel.getTopHeadlines()
         viewModel.getNews(page: tableView.currentPage)
     }
     
@@ -47,6 +48,10 @@ extension DashboardViewController {
             self.showAlertError(message)
         }
         
+        viewModel.topHeadlinesObserver.observe(disposable) { response in
+            self.tableView.addTopHeadlinesItem(news: response?.articles)
+        }
+        
         viewModel.newsObserver.observe(disposable) { response in
             self.tableView.addNewsItem(news: response?.articles)
         }
@@ -56,7 +61,11 @@ extension DashboardViewController {
         }
         
         tableView.itemSelected.observe(disposable) { news in
-            print(news?.author)
+            guard let news = news else { return }
+            NewsDetailViewController.call(
+                self.navigationController,
+                data: news
+            )
         }
     }
 }

@@ -36,6 +36,8 @@
 		977F254E24607A4600C1BD43 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F254C24607A4600C1BD43 /* SectionHeaderView.swift */; };
 		977F254F24607A4600C1BD43 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 977F254D24607A4600C1BD43 /* SectionHeaderView.xib */; };
 		977F25512460EA1C00C1BD43 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F25502460EA1C00C1BD43 /* BaseTableView.swift */; };
+		977F25542461373100C1BD43 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F25522461373100C1BD43 /* NewsDetailViewController.swift */; };
+		977F25552461373100C1BD43 /* NewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 977F25532461373100C1BD43 /* NewsDetailViewController.xib */; };
 		9796F809245D71D40072E625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F808245D71D40072E625 /* AppDelegate.swift */; };
 		9796F80B245D71D40072E625 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F80A245D71D40072E625 /* SceneDelegate.swift */; };
 		9796F80D245D71D40072E625 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F80C245D71D40072E625 /* DashboardViewController.swift */; };
@@ -99,6 +101,8 @@
 		977F254C24607A4600C1BD43 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		977F254D24607A4600C1BD43 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		977F25502460EA1C00C1BD43 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		977F25522461373100C1BD43 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		977F25532461373100C1BD43 /* NewsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailViewController.xib; sourceTree = "<group>"; };
 		9796F805245D71D40072E625 /* Indonesian News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Indonesian News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9796F808245D71D40072E625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9796F80A245D71D40072E625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			children = (
 				9796F80C245D71D40072E625 /* DashboardViewController.swift */,
 				9796F80E245D71D40072E625 /* Main.storyboard */,
+				977F25522461373100C1BD43 /* NewsDetailViewController.swift */,
+				977F25532461373100C1BD43 /* NewsDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				977F2523245FEB7300C1BD43 /* TopHeadlinesCell.xib in Resources */,
 				977F254F24607A4600C1BD43 /* SectionHeaderView.xib in Resources */,
 				9796F812245D71D50072E625 /* Assets.xcassets in Resources */,
+				977F25552461373100C1BD43 /* NewsDetailViewController.xib in Resources */,
 				977F252D245FEDAA00C1BD43 /* TopHeadLinesCollectionViewCell.xib in Resources */,
 				977F254324605F7A00C1BD43 /* Roboto-Bold.ttf in Resources */,
 				9796F810245D71D40072E625 /* Main.storyboard in Resources */,
@@ -637,6 +644,7 @@
 				977F25452460628700C1BD43 /* FontConfig.swift in Sources */,
 				977F252F2460087000C1BD43 /* UICollectionViewCellExt.swift in Sources */,
 				977F254924606FFF00C1BD43 /* SectionData.swift in Sources */,
+				977F25542461373100C1BD43 /* NewsDetailViewController.swift in Sources */,
 				975D1B2E245EAE7900E9B4BA /* BaseService.swift in Sources */,
 				975D1B38245EBEDD00E9B4BA /* NewsService.swift in Sources */,
 				9796F844245D76B60072E625 /* AlertBuilder.swift in Sources */,
@@ -749,7 +757,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -803,7 +811,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -821,6 +829,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9UB4842E4;
 				INFOPLIST_FILE = "Indonesian News/Core/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -840,6 +849,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9UB4842E4;
 				INFOPLIST_FILE = "Indonesian News/Core/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
