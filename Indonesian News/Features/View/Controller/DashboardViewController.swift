@@ -13,27 +13,27 @@ import Moya
 class DashboardViewController : BaseViewController {
     @IBOutlet weak var tableView: NewsTableView!
     
-    private var viewModel: DashboardViewModel!
+    private var viewModel: NewsViewModel!
     private var disposable = DisposeBag()
     private var service: NewsService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
-        setupUI()
+        setupView()
     }
     
     private func setupData() {
         service = NewsService(provider: MoyaProvider<NewsApi>())
-        viewModel = DashboardViewModel(disposable: disposable, service: service)
+        viewModel = NewsViewModel(disposable: disposable, service: service)
+        tableView.setViewModel(viewModel: viewModel, disposable: disposable)
         
         setupObserver()
-        //viewModel.getTopHeadlines()
         viewModel.getNews(page: tableView.currentPage)
     }
     
-    private func setupUI() {
-        
+    private func setupView() {
+        self.navigationItem.title = "Indonesian's News"
     }
 }
 
@@ -45,10 +45,6 @@ extension DashboardViewController {
         
         viewModel.errorObserver.observe(disposable) { message in
             self.showAlertError(message)
-        }
-        
-        viewModel.topHeadlinesObserver.observe(disposable) { response in
-            //self.tableView.addTopHidelinesItem(news: response?.articles)
         }
         
         viewModel.newsObserver.observe(disposable) { response in

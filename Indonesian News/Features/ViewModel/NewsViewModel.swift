@@ -8,7 +8,7 @@
 
 import RxSwift
 
-class DashboardViewModel : BaseViewModel {
+class NewsViewModel : BaseViewModel {
     private var service: NewsService!
     var topHeadlinesObserver = ObservableData<NewsResponse>()
     var newsObserver = ObservableData<NewsResponse>()
@@ -49,7 +49,7 @@ class DashboardViewModel : BaseViewModel {
     }
 }
 
-extension DashboardViewModel {
+extension NewsViewModel {
     private func isValidateResponse(response: NewsResponse) -> Bool {
         if response.status?.lowercased() == "ok" {
             return true

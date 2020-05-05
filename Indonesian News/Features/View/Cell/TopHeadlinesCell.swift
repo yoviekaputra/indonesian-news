@@ -8,40 +8,35 @@
 
 import UIKit
 import RxSwift
-import Moya
 
 class TopHeadlinesCell : UITableViewCell {
     @IBOutlet weak var collectionTopHeadlines: UICollectionView!
-    var itemSelected = ObservableData<NewsModel>()
+    private var itemSelected: ObservableData<NewsModel>?
     private var topHeadlinesItem: [NewsModel] = []
-    
-    private var viewModel: DashboardViewModel!
-    private var disposable = DisposeBag()
-    private var service: NewsService!
-    private var reload: (() -> Void) = {}
     
     override func awakeFromNib() {
         collectionTopHeadlines.delegate = self
         collectionTopHeadlines.dataSource = self
-        collectionTopHeadlines.register(TopHeadLinesCollectionViewCell.nib,
-                                        forCellWithReuseIdentifier: TopHeadLinesCollectionViewCell.identifier)
-        
-        service = NewsService(provider: MoyaProvider<NewsApi>())
-        viewModel = DashboardViewModel(disposable: disposable, service: service)
-        
+        collectionTopHeadlines.register(
+            TopHeadLinesCollectionViewCell.nib,
+            forCellWithReuseIdentifier: TopHeadLinesCollectionViewCell.identifier
+        )
+    }
+    
+    func setViewModel(viewModel: NewsViewModel, disposable: DisposeBag) {
         viewModel.getTopHeadlines()
         viewModel.topHeadlinesObserver.observe(disposable) { response in
             self.topHeadlinesItem.append(contentsOf: response?.articles ?? [])
             self.collectionTopHeadlines.reloadData()
         }
     }
+    
+    func setItemSelectedObservable(itemSelected: ObservableData<NewsModel>) {
+        self.itemSelected = itemSelected
+    }
 }
 
 extension TopHeadlinesCell : UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return topHeadlinesItem.count
     }
@@ -54,7 +49,7 @@ extension TopHeadlinesCell : UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        itemSelected.value = topHeadlinesItem[indexPath.row]
+        itemSelected?.value = topHeadlinesItem[indexPath.row]
     }
 }
 
@@ -64,7 +59,7 @@ extension TopHeadlinesCell : UICollectionViewDelegateFlowLayout {
     }
     
     private func getSize() -> CGSize {
-        let width = collectionTopHeadlines.frame.width - 42
+        let width = self.frame.width - 42
         let height = (width * (1/2))
         return CGSize(width: width, height: height)
     }

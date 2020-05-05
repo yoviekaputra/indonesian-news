@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 
-class NewsTableView : UITableView {
+class NewsTableView : BaseTableView {
+    private var viewModel: NewsViewModel!
+    private var disposable: DisposeBag!
+    
     var itemSelected = ObservableData<NewsModel>()
     var loadMore = ObservableData<Int>()
     var currentPage = 1
@@ -18,17 +22,7 @@ class NewsTableView : UITableView {
         SectionData(cell: [NewsModel](), header: NewsType.General)
     ]
     
-    override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: style)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
-    }
-    
-    private func setupView() {
+    override func setupView() {
         delegate = self
         dataSource = self
         sectionHeaderHeight = UITableView.automaticDimension
@@ -40,15 +34,14 @@ class NewsTableView : UITableView {
         register(GeneralNewsCell.nib, forCellReuseIdentifier: GeneralNewsCell.identifier)
         register(TopHeadlinesCell.nib, forCellReuseIdentifier: TopHeadlinesCell.identifier)
     }
+    
+    func setViewModel(viewModel: NewsViewModel, disposable: DisposeBag) {
+        self.viewModel = viewModel
+        self.disposable = disposable
+    }
 }
 
 extension NewsTableView {
-    func addTopHidelinesItem(news: [NewsModel]?) {
-        if let news = news {
-            addItem(type: .TopHeadlines, news: news)
-        }
-    }
-    
     func addNewsItem(news: [NewsModel]?) {
         if let news = news {
             addItem(type: .General, news: news)
@@ -59,7 +52,7 @@ extension NewsTableView {
         for (index, section) in newsSection.enumerated() {
             if section.header.rawValue == type.rawValue {
                 newsSection[index].cell.append(contentsOf: news)
-                reloadSections(IndexSet(integer: index), with: RowAnimation.none)
+                reloadData()
                 return
             }
         }
@@ -97,7 +90,10 @@ extension NewsTableView : UITableViewDelegate, UITableViewDataSource {
         let header = section.header
         switch header {
         case .TopHeadlines:
-            return TopHeadlinesCell.dequeue(tableView: tableView, indexPath: indexPath)
+            let cell = TopHeadlinesCell.dequeue(tableView: tableView, indexPath: indexPath)
+            cell.setViewModel(viewModel: viewModel, disposable: disposable)
+            cell.setItemSelectedObservable(itemSelected: itemSelected)
+            return cell
         default:
             let news = section.cell[indexPath.row]
             let cell = GeneralNewsCell.dequeue(tableView: tableView, indexPath: indexPath)

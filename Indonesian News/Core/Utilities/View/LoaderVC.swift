@@ -22,9 +22,10 @@ class LoaderVC {
             guard let topWindow = UIApplication.shared.windows.last else { return }
             /* Create Loader */
             let indicator = UIActivityIndicatorView()
-            //indicator.transform = CGAffineTransform(scaleX: 1, y: 1)
-            //indicator.tintColor = UIColor.white
-            indicator.style = .large
+            indicator.style = .medium
+            indicator.center = topWindow.center
+            indicator.startAnimating()
+            
             
             /* create view */
             loaderView = UIView.init(frame: topWindow.bounds)
