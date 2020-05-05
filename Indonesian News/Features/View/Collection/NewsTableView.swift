@@ -52,7 +52,7 @@ extension NewsTableView {
         for (index, section) in newsSection.enumerated() {
             if section.header.rawValue == type.rawValue {
                 newsSection[index].cell.append(contentsOf: news)
-                reloadData()
+                reloadSections(IndexSet(integer: index), with: .top)
                 return
             }
         }

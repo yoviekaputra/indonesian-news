@@ -28,7 +28,6 @@
                             <constraint firstAttribute="trailing" secondItem="b6K-w5-KwO" secondAttribute="trailing" id="30l-DH-JGS"/>
                             <constraint firstAttribute="bottom" secondItem="b6K-w5-KwO" secondAttribute="bottom" id="7VF-gx-1d1"/>
                             <constraint firstItem="b6K-w5-KwO" firstAttribute="top" secondItem="Eco-Ah-e1Y" secondAttribute="top" id="Ipq-te-KrD"/>
-                            <constraint firstAttribute="width" secondItem="Eco-Ah-e1Y" secondAttribute="height" multiplier="2:1" id="Q9L-bP-4Hc"/>
                             <constraint firstItem="b6K-w5-KwO" firstAttribute="leading" secondItem="Eco-Ah-e1Y" secondAttribute="leading" id="mhN-6U-KgU"/>
                         </constraints>
                     </view>
