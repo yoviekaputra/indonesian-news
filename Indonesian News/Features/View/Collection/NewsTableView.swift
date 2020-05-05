@@ -10,9 +10,12 @@ import UIKit
 
 class NewsTableView : UITableView {
     var itemSelected = ObservableData<NewsModel>()
+    var loadMore = ObservableData<Int>()
+    var currentPage = 1
+    
     private var newsSection: [SectionData] = [
         SectionData(cell: [NewsModel](), header: NewsType.TopHeadlines),
-        SectionData(cell: [NewsModel](), header: NewsType.Generic)
+        SectionData(cell: [NewsModel](), header: NewsType.General)
     ]
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -28,10 +31,14 @@ class NewsTableView : UITableView {
     private func setupView() {
         delegate = self
         dataSource = self
-        register(GeneralNewsCell.nib, forCellReuseIdentifier: GeneralNewsCell.identifier)
+        sectionHeaderHeight = UITableView.automaticDimension
+        estimatedSectionHeaderHeight = 36
         estimatedRowHeight = 125
         rowHeight = UITableView.automaticDimension
         separatorStyle = .none
+        
+        register(GeneralNewsCell.nib, forCellReuseIdentifier: GeneralNewsCell.identifier)
+        register(TopHeadlinesCell.nib, forCellReuseIdentifier: TopHeadlinesCell.identifier)
     }
 }
 
@@ -42,20 +49,26 @@ extension NewsTableView {
         }
     }
     
-    func addItemGenericNews(news: [NewsModel]?) {
+    func addNewsItem(news: [NewsModel]?) {
         if let news = news {
-            addItem(type: .Generic, news: news)
+            addItem(type: .General, news: news)
         }
     }
     
     private func addItem(type: NewsType, news: [NewsModel]) {
         for (index, section) in newsSection.enumerated() {
-            print("\(index) - \(section.header.rawValue) - \(type.rawValue)")
             if section.header.rawValue == type.rawValue {
                 newsSection[index].cell.append(contentsOf: news)
                 reloadSections(IndexSet(integer: index), with: RowAnimation.none)
                 return
             }
+        }
+    }
+    
+    private func loadMoreChecking(cellEndIndex: Int, row: Int) {
+        if cellEndIndex-1 == row {
+            currentPage += 1
+            loadMore.value = currentPage
         }
     }
 }
@@ -66,34 +79,30 @@ extension NewsTableView : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsSection[section].cell.count
+        switch newsSection[section].header {
+        case .TopHeadlines: return 1
+        default: return newsSection[section].cell.count
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = SectionHeaderView()
         let section = newsSection[section]
         headerView.binding(header: section.header.rawValue)
-        /*let myLabel = UILabel()
-        myLabel.frame = CGRect(x: 8, y: 4, width: tableView.frame.width, height: 20)
-        myLabel.setBold()
-        myLabel.setTextBig()
-        myLabel.text = section.header.rawValue
-        print(section.header.rawValue)
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.lightText
-        headerView.addSubview(myLabel)*/
         return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch newsSection[indexPath.section].header {
+        let section = newsSection[indexPath.section]
+        let header = section.header
+        switch header {
         case .TopHeadlines:
-            let cell = GeneralNewsCell.dequeue(tableView: tableView, indexPath: indexPath)
-            cell.binding(model: newsSection[indexPath.section].cell[indexPath.row])
-            return cell
+            return TopHeadlinesCell.dequeue(tableView: tableView, indexPath: indexPath)
         default:
+            let news = section.cell[indexPath.row]
             let cell = GeneralNewsCell.dequeue(tableView: tableView, indexPath: indexPath)
-            cell.binding(model: newsSection[indexPath.section].cell[indexPath.row])
+            cell.binding(news: news)
+            loadMoreChecking(cellEndIndex: section.cell.endIndex, row: indexPath.row)
             return cell
         }
     }

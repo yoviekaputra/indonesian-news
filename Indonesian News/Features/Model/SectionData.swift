@@ -15,5 +15,5 @@ struct SectionData {
 
 enum NewsType: String {
     case TopHeadlines = "Top Headlines"
-    case Generic = "Generic News"
+    case General = "News"
 }

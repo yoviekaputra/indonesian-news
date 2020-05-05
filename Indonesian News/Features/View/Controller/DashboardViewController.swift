@@ -28,7 +28,8 @@ class DashboardViewController : BaseViewController {
         viewModel = DashboardViewModel(disposable: disposable, service: service)
         
         setupObserver()
-        viewModel.getTopHighlight()
+        //viewModel.getTopHeadlines()
+        viewModel.getNews(page: tableView.currentPage)
     }
     
     private func setupUI() {
@@ -46,9 +47,16 @@ extension DashboardViewController {
             self.showAlertError(message)
         }
         
+        viewModel.topHeadlinesObserver.observe(disposable) { response in
+            //self.tableView.addTopHidelinesItem(news: response?.articles)
+        }
+        
         viewModel.newsObserver.observe(disposable) { response in
-            self.tableView.addTopHidelinesItem(news: response?.articles)
-            self.tableView.addItemGenericNews(news: response?.articles)
+            self.tableView.addNewsItem(news: response?.articles)
+        }
+        
+        tableView.loadMore.observe(disposable) { page in
+            self.viewModel.getNews(page: page ?? 1)
         }
         
         tableView.itemSelected.observe(disposable) { news in

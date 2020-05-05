@@ -10,6 +10,7 @@ import RxSwift
 
 class DashboardViewModel : BaseViewModel {
     private var service: NewsService!
+    var topHeadlinesObserver = ObservableData<NewsResponse>()
     var newsObserver = ObservableData<NewsResponse>()
     
     init(disposable: DisposeBag, service: NewsService) {
@@ -17,18 +18,55 @@ class DashboardViewModel : BaseViewModel {
         self.service = service
     }
     
-    func getTopHighlight() {
+    func getTopHeadlines() {
         self.loadingObserver.value = .show
-        self.service.getTopHighlight()
+        self.service.getTopHeadlines()
             .subscribe { event in
                 self.loadingObserver.value = .hide
                 switch event {
                 case .success(let data):
-                    self.newsObserver.value = data
+                    self.handleTopHeadlinesResponse(data)
                 case .error(let error):
                     self.onError(error)
                 }
             }
             .disposed(by: disposable)
+    }
+    
+    func getNews(page: Int) {
+        self.loadingObserver.value = .show
+        self.service.getNews(page: page)
+            .subscribe { event in
+                self.loadingObserver.value = .hide
+                switch event {
+                case .success(let data):
+                    self.handleNewsResponse(data)
+                case .error(let error):
+                    self.onError(error)
+                }
+            }
+            .disposed(by: disposable)
+    }
+}
+
+extension DashboardViewModel {
+    private func isValidateResponse(response: NewsResponse) -> Bool {
+        if response.status?.lowercased() == "ok" {
+            return true
+        }
+        self.onError(response.message ?? "")
+        return false
+    }
+    
+    private func handleTopHeadlinesResponse(_ data: NewsResponse) {
+        if isValidateResponse(response: data) {
+            self.topHeadlinesObserver.value = data
+        }
+    }
+    
+    private func handleNewsResponse(_ data: NewsResponse) {
+        if isValidateResponse(response: data) {
+            self.newsObserver.value = data
+        }
     }
 }

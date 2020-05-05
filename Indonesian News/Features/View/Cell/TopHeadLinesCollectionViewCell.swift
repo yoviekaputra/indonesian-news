@@ -11,12 +11,17 @@ import UIKit
 class TopHeadLinesCollectionViewCell : BaseCollectionViewCell {
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var imgView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
 
 extension TopHeadLinesCollectionViewCell {
     func binding(model: NewsModel) {
         if let urlImage = model.urlToImage {
-            imgView.load(fromUrl: urlImage, placeholder: nil)
+            imgView.load(fromUrl: urlImage, mode: .scaleAspectFill)
+            imgView.layer.cornerRadius = 4
         }
     }
 }

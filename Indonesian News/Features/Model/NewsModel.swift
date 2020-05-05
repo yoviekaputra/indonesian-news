@@ -11,6 +11,7 @@ import Foundation
 class NewsResponse : Decodable {
     var status: String?
     var totalResults: Int?
+    var message: String?
     var articles: [NewsModel]?
 }
 

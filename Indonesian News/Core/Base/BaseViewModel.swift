@@ -21,6 +21,10 @@ class BaseViewModel {
     }
     
     func onError(_ error: Error) {
-        errorObserver.value = error.localizedDescription
+        onError(error.localizedDescription)
+    }
+    
+    func onError(_ error: String) {
+        errorObserver.value = error
     }
 }

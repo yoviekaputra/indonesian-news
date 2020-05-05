@@ -14,29 +14,29 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hny-qg-k6f">
-                    <rect key="frame" x="8" y="8" width="398" height="40"/>
+                    <rect key="frame" x="8" y="4" width="398" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="P5v-Ez-WgM"/>
+                        <constraint firstAttribute="height" constant="25" id="P5v-Ez-WgM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.98029583692550659" green="0.98045963048934937" blue="0.9802742600440979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="hny-qg-k6f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="5Jk-Ej-3dq"/>
+                <constraint firstItem="hny-qg-k6f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="4" id="5Jk-Ej-3dq"/>
                 <constraint firstItem="hny-qg-k6f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="GaS-sl-pgt"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hny-qg-k6f" secondAttribute="bottom" constant="8" id="dck-TB-Pq7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hny-qg-k6f" secondAttribute="bottom" constant="4" id="dck-TB-Pq7"/>
                 <constraint firstAttribute="trailing" secondItem="hny-qg-k6f" secondAttribute="trailing" constant="8" id="e1B-Yf-R4q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="137.68115942028987" y="-177.79017857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="-178.125"/>
         </view>
     </objects>
 </document>

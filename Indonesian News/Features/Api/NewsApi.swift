@@ -10,20 +10,20 @@ import Foundation
 import Moya
 
 enum NewsApi {
-    case getTopHiglight(_ country: String, _ page: Int, _ pageSize: Int)
+    case getNews(_ country: String, _ category: String, _ page: Int, _ pageSize: Int)
 }
 
 extension NewsApi : BaseApi {
     var path: String {
         switch self {
-        case .getTopHiglight(_, _, _):
+        case .getNews:
             return "/top-headlines"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getTopHiglight(_, _, _):
+        case .getNews:
             return .get
         }
     }
@@ -31,8 +31,9 @@ extension NewsApi : BaseApi {
     var task: Task {
         var param: [String: Any] = baseParam
         switch self {
-        case .getTopHiglight(let country, let page, let pageSize):
+        case .getNews(let country, let category, let page, let pageSize):
             param["country"] = country
+            param["category"] = category
             param["page"] = page
             param["pageSize"] = pageSize
             return .requestParameters(parameters: param, encoding: URLEncoding.queryString)

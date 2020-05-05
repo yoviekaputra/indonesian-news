@@ -7,22 +7,41 @@
 //
 
 import UIKit
+import RxSwift
+import Moya
 
 class TopHeadlinesCell : UITableViewCell {
     @IBOutlet weak var collectionTopHeadlines: UICollectionView!
     var itemSelected = ObservableData<NewsModel>()
     private var topHeadlinesItem: [NewsModel] = []
-    private var paddingSize: CGFloat = 8
+    
+    private var viewModel: DashboardViewModel!
+    private var disposable = DisposeBag()
+    private var service: NewsService!
+    private var reload: (() -> Void) = {}
     
     override func awakeFromNib() {
         collectionTopHeadlines.delegate = self
         collectionTopHeadlines.dataSource = self
-        collectionTopHeadlines.register(TopHeadLinesCollectionViewCell.self,
+        collectionTopHeadlines.register(TopHeadLinesCollectionViewCell.nib,
                                         forCellWithReuseIdentifier: TopHeadLinesCollectionViewCell.identifier)
+        
+        service = NewsService(provider: MoyaProvider<NewsApi>())
+        viewModel = DashboardViewModel(disposable: disposable, service: service)
+        
+        viewModel.getTopHeadlines()
+        viewModel.topHeadlinesObserver.observe(disposable) { response in
+            self.topHeadlinesItem.append(contentsOf: response?.articles ?? [])
+            self.collectionTopHeadlines.reloadData()
+        }
     }
 }
 
 extension TopHeadlinesCell : UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return topHeadlinesItem.count
     }
@@ -46,7 +65,7 @@ extension TopHeadlinesCell : UICollectionViewDelegateFlowLayout {
     
     private func getSize() -> CGSize {
         let width = collectionTopHeadlines.frame.width - 42
-        let height = collectionTopHeadlines.frame.width / 2
+        let height = (width * (1/2))
         return CGSize(width: width, height: height)
     }
 }

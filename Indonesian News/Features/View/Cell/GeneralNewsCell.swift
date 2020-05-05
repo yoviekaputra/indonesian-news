@@ -25,20 +25,17 @@ class GeneralNewsCell : UITableViewCell {
         lblNewsDescription.setTextMedium()
         lblNewsDate.setTextExtraSmall()
     }
-    
-    override func layoutSubviews() {
-        imgNewsImage.layer.cornerRadius = 4
-    }
 }
 
 extension GeneralNewsCell {
-    func binding(model: NewsModel) {
-        lblNewsTitle.text = model.title
-        lblNewsDescription.text = "\(model.source?.name ?? "") | by \(model.author ?? "")"
-        lblNewsDate.text = model.publishedAt
+    func binding(news: NewsModel) {
+        lblNewsTitle.text = news.title
+        lblNewsDescription.text = "\(news.source?.name ?? "") | by \(news.author ?? "")"
+        lblNewsDate.text = news.publishedAt
         
-        if let imgUrl = model.urlToImage {
+        if let imgUrl = news.urlToImage {
             imgNewsImage.load(fromUrl: imgUrl, mode: .scaleAspectFill)
+            imgNewsImage.layer.cornerRadius = 4
         }
     }
 }

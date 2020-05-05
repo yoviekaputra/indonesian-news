@@ -12,12 +12,16 @@ import Moya
 class NewsService : BaseService {
     private var provider: MoyaProvider<NewsApi>!
     
+    //get from API
     init(provider: MoyaProvider<NewsApi>) {
         self.provider = provider
     }
     
-    func getTopHighlight() -> Single<NewsResponse> {
-        //get from API
-        return provider.rx.request(.getTopHiglight("id", 1, 5), NewsResponse.self)
+    func getTopHeadlines() -> Single<NewsResponse> {
+        return provider.rx.request(.getNews("id", "technology", 1, 5), NewsResponse.self)
+    }
+    
+    func getNews(page: Int) -> Single<NewsResponse> {
+        return provider.rx.request(.getNews("id", "", page, 10), NewsResponse.self)
     }
 }
