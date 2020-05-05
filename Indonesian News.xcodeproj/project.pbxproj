@@ -38,6 +38,10 @@
 		977F25512460EA1C00C1BD43 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F25502460EA1C00C1BD43 /* BaseTableView.swift */; };
 		977F25542461373100C1BD43 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F25522461373100C1BD43 /* NewsDetailViewController.swift */; };
 		977F25552461373100C1BD43 /* NewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 977F25532461373100C1BD43 /* NewsDetailViewController.xib */; };
+		977F255B24615F8500C1BD43 /* paging.png in Resources */ = {isa = PBXBuildFile; fileRef = 977F255724615F8400C1BD43 /* paging.png */; };
+		977F255C24615F8500C1BD43 /* detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 977F255824615F8400C1BD43 /* detail.png */; };
+		977F255D24615F8500C1BD43 /* dashboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 977F255924615F8500C1BD43 /* dashboard.png */; };
+		977F255E24615F8500C1BD43 /* launchsreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 977F255A24615F8500C1BD43 /* launchsreen.png */; };
 		9796F809245D71D40072E625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F808245D71D40072E625 /* AppDelegate.swift */; };
 		9796F80B245D71D40072E625 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F80A245D71D40072E625 /* SceneDelegate.swift */; };
 		9796F80D245D71D40072E625 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F80C245D71D40072E625 /* DashboardViewController.swift */; };
@@ -103,6 +107,10 @@
 		977F25502460EA1C00C1BD43 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		977F25522461373100C1BD43 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		977F25532461373100C1BD43 /* NewsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailViewController.xib; sourceTree = "<group>"; };
+		977F255724615F8400C1BD43 /* paging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paging.png; sourceTree = "<group>"; };
+		977F255824615F8400C1BD43 /* detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail.png; sourceTree = "<group>"; };
+		977F255924615F8500C1BD43 /* dashboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashboard.png; sourceTree = "<group>"; };
+		977F255A24615F8500C1BD43 /* launchsreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchsreen.png; sourceTree = "<group>"; };
 		9796F805245D71D40072E625 /* Indonesian News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Indonesian News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9796F808245D71D40072E625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9796F80A245D71D40072E625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -262,12 +270,24 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		977F255624615F1200C1BD43 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				977F255924615F8500C1BD43 /* dashboard.png */,
+				977F255824615F8400C1BD43 /* detail.png */,
+				977F255A24615F8500C1BD43 /* launchsreen.png */,
+				977F255724615F8400C1BD43 /* paging.png */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		9796F7FC245D71D40072E625 = {
 			isa = PBXGroup;
 			children = (
 				9796F807245D71D40072E625 /* Indonesian News */,
 				9796F81E245D71D50072E625 /* Indonesian NewsTests */,
 				9796F829245D71D50072E625 /* Indonesian NewsUITests */,
+				977F255624615F1200C1BD43 /* Preview */,
 				9796F806245D71D40072E625 /* Products */,
 				9C5403A817385D5FA8519F25 /* Pods */,
 				0A26CC6649AC3E37D5456A46 /* Frameworks */,
@@ -532,7 +552,11 @@
 				9796F812245D71D50072E625 /* Assets.xcassets in Resources */,
 				977F25552461373100C1BD43 /* NewsDetailViewController.xib in Resources */,
 				977F252D245FEDAA00C1BD43 /* TopHeadLinesCollectionViewCell.xib in Resources */,
+				977F255E24615F8500C1BD43 /* launchsreen.png in Resources */,
+				977F255D24615F8500C1BD43 /* dashboard.png in Resources */,
+				977F255C24615F8500C1BD43 /* detail.png in Resources */,
 				977F254324605F7A00C1BD43 /* Roboto-Bold.ttf in Resources */,
+				977F255B24615F8500C1BD43 /* paging.png in Resources */,
 				9796F810245D71D40072E625 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
