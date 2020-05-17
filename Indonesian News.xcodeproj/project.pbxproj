@@ -56,6 +56,7 @@
 		9796F847245D7B7A0072E625 /* UITableViewCellExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F846245D7B7A0072E625 /* UITableViewCellExt.swift */; };
 		9796F84D245D7D5B0072E625 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F84C245D7D5B0072E625 /* NewsViewModel.swift */; };
 		9796F84F245D7D740072E625 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9796F84E245D7D740072E625 /* BaseViewModel.swift */; };
+		97C128B5247109DB00386E29 /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C128B4247109DB00386E29 /* BuildConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		9796F846245D7B7A0072E625 /* UITableViewCellExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExt.swift; sourceTree = "<group>"; };
 		9796F84C245D7D5B0072E625 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		9796F84E245D7D740072E625 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		97C128B4247109DB00386E29 /* BuildConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfig.swift; sourceTree = "<group>"; };
 		9B1A95C301DCF5C7422521C4 /* Pods-Indonesian NewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Indonesian NewsTests.release.xcconfig"; path = "Target Support Files/Pods-Indonesian NewsTests/Pods-Indonesian NewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8E210D10FE0BB7F3BB2C525 /* Pods_Indonesian_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Indonesian_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4EE79EF7D6DBC05085F4F3 /* Pods_Indonesian_NewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Indonesian_NewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				9796F83D245D73EB0072E625 /* Base */,
+				97C128B3247109C100386E29 /* Config */,
 				9796F83E245D73F60072E625 /* Utilities */,
 				9796F808245D71D40072E625 /* AppDelegate.swift */,
 				9796F813245D71D50072E625 /* LaunchScreen.storyboard */,
@@ -424,6 +427,14 @@
 				977F251F245FC02700C1BD43 /* Controller */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		97C128B3247109C100386E29 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				97C128B4247109DB00386E29 /* BuildConfig.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		9C5403A817385D5FA8519F25 /* Pods */ = {
@@ -664,6 +675,7 @@
 				9796F847245D7B7A0072E625 /* UITableViewCellExt.swift in Sources */,
 				977F254E24607A4600C1BD43 /* SectionHeaderView.swift in Sources */,
 				9796F84F245D7D740072E625 /* BaseViewModel.swift in Sources */,
+				97C128B5247109DB00386E29 /* BuildConfig.swift in Sources */,
 				977F2529245FEC2200C1BD43 /* UIViewExt.swift in Sources */,
 				977F25452460628700C1BD43 /* FontConfig.swift in Sources */,
 				977F252F2460087000C1BD43 /* UICollectionViewCellExt.swift in Sources */,
@@ -849,7 +861,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 711AC10A26D81A7681AE97FF /* Pods-Indonesian News.debug.xcconfig */;
 			buildSettings = {
+				API_KEY = 5ec17823e4b64585a5f9659e529ed156;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "http://newsapi.org/v2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9UB4842E4;
 				INFOPLIST_FILE = "Indonesian News/Core/Info.plist";
@@ -869,7 +883,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1BAFE5E7F85BC8C52537B62 /* Pods-Indonesian News.release.xcconfig */;
 			buildSettings = {
+				API_KEY = 5ec17823e4b64585a5f9659e529ed156;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BASE_URL = "http://newsapi.org/v2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9UB4842E4;
 				INFOPLIST_FILE = "Indonesian News/Core/Info.plist";

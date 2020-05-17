@@ -13,11 +13,11 @@ protocol BaseApi : TargetType {}
 
 extension BaseApi {
     var API_KEY: String {
-        return "5ec17823e4b64585a5f9659e529ed156"
+        return BuildConfig.get(key: .APIKey)
     }
     
     var BASE_URL: String {
-        return "http://newsapi.org/v2"
+        return BuildConfig.get(key: .BaseURL)
     }
     
     var baseURL: URL {

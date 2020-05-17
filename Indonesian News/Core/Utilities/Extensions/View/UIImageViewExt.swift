@@ -8,17 +8,20 @@
 
 import UIKit
 
-fileprivate let imageCache = NSCache<NSString,UIImage>()
+private let imageCache = NSCache<NSString,UIImage>()
 
 extension UIImageView {
     func load(fromUrl: String, placeholder: UIImage? = nil, mode: UIView.ContentMode = .scaleAspectFit) {
+        let indicator = getLoadingIndicator()
         let url = URL(string: fromUrl)
         self.backgroundColor = UIColor.clear
         self.contentMode = mode
-        self.image = placeholder
+        
+        self.setPlaceholder(placeholder: placeholder, indicator: indicator)
         
         if let cache = imageCache.object(forKey: (url?.absoluteString ?? "") as NSString) {
             self.image = cache
+            indicator.removeFromSuperview()
             return
         }
         
@@ -35,8 +38,26 @@ extension UIImageView {
                 imageCache.setObject(image, forKey: (url?.absoluteString ?? "") as NSString)
                 DispatchQueue.main.async {
                     self.image = image
+                    indicator.removeFromSuperview()
                 }
             }.resume()
         }
+    }
+    
+    private func setPlaceholder(placeholder: UIImage? = nil, indicator: UIView) {
+        if let placeholder = placeholder {
+            self.image = placeholder
+        } else {
+            self.addSubview(indicator)
+        }
+    }
+    
+    private func getLoadingIndicator() -> UIView {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .medium
+        indicator.center.x = self.frame.width / 2
+        indicator.center.y = self.frame.height / 2
+        indicator.startAnimating()
+        return indicator
     }
 }
