@@ -17,6 +17,11 @@
 		975D1B38245EBEDD00E9B4BA /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975D1B37245EBEDD00E9B4BA /* NewsService.swift */; };
 		975D1B3C245ED7F900E9B4BA /* LoaderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975D1B3B245ED7F900E9B4BA /* LoaderState.swift */; };
 		975D1B3F245ED81D00E9B4BA /* ObservableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975D1B3E245ED81D00E9B4BA /* ObservableData.swift */; };
+		9770DC5E247B49C300AE69AA /* DIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770DC5D247B49C300AE69AA /* DIModel.swift */; };
+		9770DC60247B4B2000AE69AA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770DC5F247B4B2000AE69AA /* Coordinator.swift */; };
+		9770DC62247B4B9700AE69AA /* AppStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770DC61247B4B9700AE69AA /* AppStoryboards.swift */; };
+		9770DC68247B55BC00AE69AA /* AppXIBs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770DC67247B55BC00AE69AA /* AppXIBs.swift */; };
+		9770DC6A247B564700AE69AA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9770DC69247B564700AE69AA /* UIViewController.swift */; };
 		977F2522245FEB7300C1BD43 /* TopHeadlinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F2520245FEB7300C1BD43 /* TopHeadlinesCell.swift */; };
 		977F2523245FEB7300C1BD43 /* TopHeadlinesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 977F2521245FEB7300C1BD43 /* TopHeadlinesCell.xib */; };
 		977F2527245FEBD100C1BD43 /* XIBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F2526245FEBD100C1BD43 /* XIBView.swift */; };
@@ -87,6 +92,11 @@
 		975D1B37245EBEDD00E9B4BA /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		975D1B3B245ED7F900E9B4BA /* LoaderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderState.swift; sourceTree = "<group>"; };
 		975D1B3E245ED81D00E9B4BA /* ObservableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableData.swift; sourceTree = "<group>"; };
+		9770DC5D247B49C300AE69AA /* DIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIModel.swift; sourceTree = "<group>"; };
+		9770DC5F247B4B2000AE69AA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9770DC61247B4B9700AE69AA /* AppStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboards.swift; sourceTree = "<group>"; };
+		9770DC67247B55BC00AE69AA /* AppXIBs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppXIBs.swift; sourceTree = "<group>"; };
+		9770DC69247B564700AE69AA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		977F2520245FEB7300C1BD43 /* TopHeadlinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesCell.swift; sourceTree = "<group>"; };
 		977F2521245FEB7300C1BD43 /* TopHeadlinesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopHeadlinesCell.xib; sourceTree = "<group>"; };
 		977F2526245FEBD100C1BD43 /* XIBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBView.swift; sourceTree = "<group>"; };
@@ -209,6 +219,7 @@
 				977F2528245FEC2200C1BD43 /* UIViewExt.swift */,
 				977F252E2460087000C1BD43 /* UICollectionViewCellExt.swift */,
 				977F253224600C8600C1BD43 /* UIImageViewExt.swift */,
+				9770DC69247B564700AE69AA /* UIViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -377,8 +388,8 @@
 				975D1B2D245EAE7900E9B4BA /* BaseService.swift */,
 				975D1B2F245EAED600E9B4BA /* BaseApi.swift */,
 				977F253024600B3400C1BD43 /* BaseCollectionViewCell.swift */,
-				977F25442460628700C1BD43 /* FontConfig.swift */,
 				977F25502460EA1C00C1BD43 /* BaseTableView.swift */,
+				9770DC5F247B4B2000AE69AA /* Coordinator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -415,6 +426,7 @@
 			children = (
 				975D1B35245EB9B600E9B4BA /* NewsModel.swift */,
 				977F254824606FFF00C1BD43 /* SectionData.swift */,
+				9770DC5D247B49C300AE69AA /* DIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -433,6 +445,9 @@
 			isa = PBXGroup;
 			children = (
 				97C128B4247109DB00386E29 /* BuildConfig.swift */,
+				977F25442460628700C1BD43 /* FontConfig.swift */,
+				9770DC61247B4B9700AE69AA /* AppStoryboards.swift */,
+				9770DC67247B55BC00AE69AA /* AppXIBs.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -660,6 +675,7 @@
 				977F2527245FEBD100C1BD43 /* XIBView.swift in Sources */,
 				975D1B3F245ED81D00E9B4BA /* ObservableData.swift in Sources */,
 				977F2522245FEB7300C1BD43 /* TopHeadlinesCell.swift in Sources */,
+				9770DC68247B55BC00AE69AA /* AppXIBs.swift in Sources */,
 				9796F842245D76010072E625 /* BaseViewController.swift in Sources */,
 				977F25512460EA1C00C1BD43 /* BaseTableView.swift in Sources */,
 				977F253324600C8600C1BD43 /* UIImageViewExt.swift in Sources */,
@@ -669,6 +685,7 @@
 				9796F840245D743E0072E625 /* LoaderVC.swift in Sources */,
 				9796F80D245D71D40072E625 /* DashboardViewController.swift in Sources */,
 				975D1B3C245ED7F900E9B4BA /* LoaderState.swift in Sources */,
+				9770DC6A247B564700AE69AA /* UIViewController.swift in Sources */,
 				9796F809245D71D40072E625 /* AppDelegate.swift in Sources */,
 				975D1B29245EA52C00E9B4BA /* ReactiveExt.swift in Sources */,
 				977F25392460543100C1BD43 /* GeneralNewsCell.swift in Sources */,
@@ -677,15 +694,18 @@
 				9796F84F245D7D740072E625 /* BaseViewModel.swift in Sources */,
 				97C128B5247109DB00386E29 /* BuildConfig.swift in Sources */,
 				977F2529245FEC2200C1BD43 /* UIViewExt.swift in Sources */,
+				9770DC62247B4B9700AE69AA /* AppStoryboards.swift in Sources */,
 				977F25452460628700C1BD43 /* FontConfig.swift in Sources */,
 				977F252F2460087000C1BD43 /* UICollectionViewCellExt.swift in Sources */,
 				977F254924606FFF00C1BD43 /* SectionData.swift in Sources */,
+				9770DC60247B4B2000AE69AA /* Coordinator.swift in Sources */,
 				977F25542461373100C1BD43 /* NewsDetailViewController.swift in Sources */,
 				975D1B2E245EAE7900E9B4BA /* BaseService.swift in Sources */,
 				975D1B38245EBEDD00E9B4BA /* NewsService.swift in Sources */,
 				9796F844245D76B60072E625 /* AlertBuilder.swift in Sources */,
 				977F253124600B3400C1BD43 /* BaseCollectionViewCell.swift in Sources */,
 				975D1B30245EAED600E9B4BA /* BaseApi.swift in Sources */,
+				9770DC5E247B49C300AE69AA /* DIModel.swift in Sources */,
 				9796F80B245D71D40072E625 /* SceneDelegate.swift in Sources */,
 				9796F84D245D7D5B0072E625 /* NewsViewModel.swift in Sources */,
 				975D1B34245EB01F00E9B4BA /* NewsApi.swift in Sources */,

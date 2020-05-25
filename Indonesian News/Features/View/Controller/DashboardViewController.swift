@@ -16,6 +16,7 @@ class DashboardViewController : BaseViewController {
     private var viewModel: NewsViewModel!
     private var disposable = DisposeBag()
     private var service: NewsService!
+    weak var diModel: DIModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

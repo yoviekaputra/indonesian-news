@@ -54,7 +54,7 @@ class NewsDetailViewController : BaseViewController {
 
 extension NewsDetailViewController {
     static func call(_ navigation: UINavigationController?, data: NewsModel) {
-        let controller = NewsDetailViewController.init(nibName: "\(NewsDetailViewController.self)", bundle: nil)
+        let controller = NewsDetailViewController.instantiate(xib: .default)
         controller.setBundle(news: data)
         navigation?.pushViewController(controller, animated: true)
     }
