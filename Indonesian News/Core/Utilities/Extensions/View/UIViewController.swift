@@ -21,6 +21,6 @@ extension UIViewController {
         xib: AppXIBs,
         presentationStyle: UIModalPresentationStyle = .automatic
     ) -> Self {
-        return xib.viewXIB(vcClass: self, presentationStyle: presentationStyle)
+        return xib.viewController(vcClass: self, presentationStyle: presentationStyle)
     }
 }

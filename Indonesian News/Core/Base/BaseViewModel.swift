@@ -9,9 +9,13 @@
 import Foundation
 import RxSwift
 
-protocol BaseViewModelDelegate {}
+protocol BaseViewModelDelegate {
+    func onError(_ error: Error)
+    
+    func onError(_ error: String)
+}
 
-class BaseViewModel {
+class BaseViewModel : BaseViewModelDelegate {
     internal var disposable: DisposeBag!
     internal var loadingObserver = ObservableData<LoaderState>()
     internal var errorObserver = ObservableData<String>()

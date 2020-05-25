@@ -17,14 +17,15 @@ class NewsDetailViewController : BaseViewController {
     @IBOutlet weak var lblNewsContent: UILabel!
     @IBOutlet weak var lblNewsOpenLink: UILabel!
 
-    private var news: NewsModel!
+    weak var coordinator: MainCoordinator?
+    weak var news: NewsModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupData()
     }
-    
+
     private func setupView() {
         lblNewsTitle.setTextBig()
         lblNewsTitle.setBold()
@@ -49,18 +50,6 @@ class NewsDetailViewController : BaseViewController {
         if news.url != nil {
             lblNewsOpenLink.tap(target: self, action: #selector(openLink))
         }
-    }
-}
-
-extension NewsDetailViewController {
-    static func call(_ navigation: UINavigationController?, data: NewsModel) {
-        let controller = NewsDetailViewController.instantiate(xib: .default)
-        controller.setBundle(news: data)
-        navigation?.pushViewController(controller, animated: true)
-    }
-    
-    private func setBundle(news: NewsModel) {
-        self.news = news
     }
 }
 

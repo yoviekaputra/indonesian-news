@@ -34,7 +34,7 @@ class NewsTableView : BaseTableView {
         register(TopHeadlinesCell.nib, forCellReuseIdentifier: TopHeadlinesCell.identifier)
     }
     
-    func setViewModel(viewModel: NewsViewModel, disposable: DisposeBag) {
+    func setViewModel(viewModel: NewsViewModel?, disposable: DisposeBag?) {
         self.viewModel = viewModel
         self.disposable = disposable
     }

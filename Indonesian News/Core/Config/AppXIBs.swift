@@ -35,7 +35,7 @@ extension AppXIBs {
         return self == .default ? "\(vc.self)" : self.rawValue
     }
     
-    func viewXIB<T: UIViewController> (
+    func viewController<T: UIViewController> (
         vcClass: T.Type,
         presentationStyle: UIModalPresentationStyle
     ) -> T {
